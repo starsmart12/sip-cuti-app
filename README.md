@@ -2,7 +2,7 @@
 
 Aplikasi berbasis Web (PHP) untuk mengelola proses pengajuan cuti pegawai secara digital. Aplikasi ini mendukung otomasi pembuatan dokumen formulir cuti dalam format `.docx` (Microsoft Word) sesuai dengan standar Mahkamah Agung.
 
-## 🚀 Fitur Utama
+##  Fitur Utama
 - **Dashboard Pegawai**: Pantau status cuti dan sisa kuota cuti tahunan.
 - **Otomasi Dokumen (.docx)**:
   - **Template Umum (`FORM_CUTI_fixx.docx`)**: Digunakan oleh staf/pegawai umum (memerlukan tanda tangan atasan langsung).
@@ -11,14 +11,14 @@ Aplikasi berbasis Web (PHP) untuk mengelola proses pengajuan cuti pegawai secara
 - **Tanda Tangan Digital**: Menyisipkan file tanda tangan (`.png`) secara otomatis ke dalam dokumen cetak.
 - **Manajemen User**: Pengelolaan data pegawai, jabatan, dan hak akses.
 
-## 🛠️ Teknologi yang Digunakan
+##  Teknologi yang Digunakan
 - **PHP 8.x** (Native)
 - **MySQL/MariaDB**
 - **Tailwind CSS** (Interface)
 - **Composer** (Dependency Manager)
 - **PHPWord Library** (Template Processing)
 
-## ⚙️ Cara Instalasi (Localhost)
+##  Cara Instalasi (Localhost)
 
 Ikuti langkah-langkah berikut untuk menjalankan aplikasi di lingkungan lokal menggunakan XAMPP:
 
@@ -65,7 +65,7 @@ Aplikasi mencari tanda tangan berdasarkan NIP. Pastikan file tanda tangan disimp
 
 Akses melalui browser di alamat: `http://localhost/sip_cuti`
 
-## 📂 Struktur Folder Utama
+##  Struktur Folder Utama
 
 * `assets/` : Menyimpan CSS, Gambar, Tanda Tangan, dan **Template DOCX**.
 * `config/` : Pengaturan koneksi database.
