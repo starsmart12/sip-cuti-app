@@ -1,0 +1,80 @@
+/* assets/css/print-rekap.css */
+
+/* Hapus Header & Footer Otomatis Browser */
+@page { 
+    size: A4 landscape; 
+    margin: 0; 
+}
+
+body { 
+    font-family: 'Arial', sans-serif; 
+    padding: 50px; 
+    background: #fff;
+    color: #333;
+}
+
+.container { width: 100%; }
+
+.header { 
+    text-align: center; 
+    border-bottom: 3px double #059669; 
+    padding-bottom: 10px; 
+    margin-bottom: 20px; 
+}
+
+.header h2 { 
+    color: #065f46; 
+    text-transform: uppercase; 
+    margin: 0; 
+    font-size: 20px; 
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    font-size: 11px; 
+}
+
+th { 
+    background-color: #ecfdf5 !important; 
+    color: #065f46; 
+    border: 1px solid #059669; 
+    padding: 10px; 
+}
+
+td { 
+    border: 1px solid #ccc; 
+    padding: 8px; 
+    vertical-align: middle; 
+}
+
+.text-center { text-align: center; }
+.font-bold { font-weight: bold; }
+
+.footer-sign { 
+    margin-top: 30px; 
+    float: right; 
+    width: 300px; 
+    text-align: center; 
+    font-size: 13px;
+}
+
+.ttd-container {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-ttd {
+    max-height: 80px;
+    object-fit: contain;
+}
+
+@media print {
+    .no-print { display: none !important; }
+    th { 
+        -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact; 
+    }
+}

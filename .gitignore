@@ -1,0 +1,12 @@
+# Abaikan folder vendor dari composer
+/vendor/
+
+# Abaikan file konfigurasi database (Sangat Penting!)
+/config/database.php
+
+# Abaikan folder upload/gambar jika tidak ingin di-upload
+/assets/img/ttd/
+
+# Abaikan file sistem
+.DS_Store
+Thumbs.db

@@ -1,0 +1,28 @@
+/* Custom Scrollbar */
+.custom-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: rgba(16, 185, 129, 0.2);
+    border-radius: 10px;
+}
+
+/* Transisi Sidebar */
+#mainSidebar {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* State Sidebar Tertutup di Desktop */
+.sidebar-closed {
+    margin-left: -256px; /* Sembunyikan selebar w-64 */
+}
+
+/* Overlay tetap hanya untuk mobile */
+@media (min-width: 1024px) {
+    #sidebarOverlay {
+        display: none !important;
+    }
+}

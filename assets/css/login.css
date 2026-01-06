@@ -1,0 +1,24 @@
+/* login.css */
+body { 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    /* Mencegah pergeseran layout saat keyboard muncul di HP */
+    height: -webkit-fill-available;
+    margin: 0;
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Animasi halus untuk tombol saat ditekan */
+.btn-active:active {
+    transform: scale(0.95);
+}
+
+/* Animasi sederhana untuk background dekoratif */
+.bg-blob {
+    filter: blur(40px);
+    z-index: 0;
+}
