@@ -1,5 +1,6 @@
-# Abaikan folder vendor dari composer
+# Abaikan folder vendor dari composer dan node_modules
 /vendor/
+node_modules/
 
 # Abaikan file konfigurasi database (Sangat Penting!)
 /config/database.php
