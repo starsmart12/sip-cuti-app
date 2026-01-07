@@ -59,8 +59,8 @@ include '../../includes/sidebar.php';
         
         <form id="formCuti" action="" method="POST" class="space-y-6">
             <div>
-                <label class="block text-sm font-bold text-emerald-800 mb-2 uppercase tracking-wide">Jenis Cuti</label>
-                <select name="id_jenis" class="w-full border-gray-200 border-2 p-3 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition bg-gray-50/50" required>
+                <label for ="id_jenis" class="block text-sm font-bold text-emerald-800 mb-2 uppercase tracking-wide">Jenis Cuti</label>
+                <select id ="id_jenis" name="id_jenis" class="w-full border-gray-200 border-2 p-3 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition bg-gray-50/50" required>
                     <option value="" disabled selected>Pilih kategori cuti...</option>
                     <?php 
                     $jenis = mysqli_query($conn, "SELECT * FROM jenis_cuti");
@@ -73,23 +73,23 @@ include '../../includes/sidebar.php';
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label class="block text-sm font-bold text-emerald-800 mb-2 uppercase tracking-wide">Tanggal Mulai</label>
-                    <input type="date" name="tanggal_mulai" id="tgl_mulai" class="w-full border-gray-200 border-2 p-3 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none transition bg-gray-50/50" required>
+                    <label for="tanggal_mulai" class="block text-sm font-bold text-emerald-800 mb-2 uppercase tracking-wide">Tanggal Mulai</label>
+                    <input id="tanggal_mulai" type="date" name="tanggal_mulai" id="tgl_mulai" class="w-full border-gray-200 border-2 p-3 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none transition bg-gray-50/50" required>
                 </div>
                 <div>
-                    <label class="block text-sm font-bold text-emerald-800 mb-2 uppercase tracking-wide">Tanggal Selesai</label>
-                    <input type="date" name="tanggal_selesai" id="tgl_selesai" class="w-full border-gray-200 border-2 p-3 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none transition bg-gray-50/50" required>
+                    <label for="tanggal_selesai" class="block text-sm font-bold text-emerald-800 mb-2 uppercase tracking-wide">Tanggal Selesai</label>
+                    <input id="tanggal_selesai" type="date" name="tanggal_selesai" id="tgl_selesai" class="w-full border-gray-200 border-2 p-3 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none transition bg-gray-50/50" required>
                 </div>
             </div>
             
             <div>
-                <label class="block text-sm font-bold text-emerald-800 mb-2 uppercase tracking-wide">Alasan Cuti</label>
-                <textarea name="alasan" id="alasan" class="w-full border-gray-200 border-2 p-3 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none transition bg-gray-50/50" rows="3" placeholder="Contoh: Keperluan keluarga mendesak..." required></textarea>
+                <label for="alasan" class="block text-sm font-bold text-emerald-800 mb-2 uppercase tracking-wide">Alasan Cuti</label>
+                <textarea id="alasan" name="alasan" id="alasan" class="w-full border-gray-200 border-2 p-3 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none transition bg-gray-50/50" rows="3" placeholder="Contoh: Keperluan keluarga mendesak..." required></textarea>
             </div>
 
             <div>
-                <label class="block text-sm font-bold text-emerald-800 mb-2 uppercase tracking-wide">Alamat Selama Cuti</label>
-                <textarea name="alamat" id="alamat" class="w-full border-gray-200 border-2 p-3 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none transition bg-gray-50/50" rows="3" placeholder="Tuliskan alamat lengkap lokasi Anda saat cuti..." required></textarea>
+                <label for="alamat" class="block text-sm font-bold text-emerald-800 mb-2 uppercase tracking-wide">Alamat Selama Cuti</label>
+                <textarea id="alamat" name="alamat" id="alamat" class="w-full border-gray-200 border-2 p-3 rounded-xl focus:ring-2 focus:ring-emerald-500 outline-none transition bg-gray-50/50" rows="3" placeholder="Tuliskan alamat lengkap lokasi Anda saat cuti..." required></textarea>
             </div>
 
             <div class="pt-4">

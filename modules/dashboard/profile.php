@@ -93,20 +93,20 @@ include '../../includes/sidebar.php';
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="md:col-span-2">
-                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Nama Lengkap</label>
-                        <input type="text" name="nama_lengkap" value="<?= $data['nama_lengkap']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all" required>
+                        <label for="nama_lengkap" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Nama Lengkap</label>
+                        <input id="nama_lengkap" type="text" name="nama_lengkap" value="<?= $data['nama_lengkap']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all" required>
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">NIP</label>
-                        <input type="text" name="nip" value="<?= $data['nip']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-emerald-500/10">
+                        <label for="nip" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">NIP</label>
+                        <input id="nip" type="text" name="nip" value="<?= $data['nip']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-emerald-500/10">
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">No. Telepon</label>
-                        <input type="text" name="no_telp" value="<?= $data['no_telp']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-emerald-500/10">
+                        <label for="no_telp" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">No. Telepon</label>
+                        <input id="no_telp" type="text" name="no_telp" value="<?= $data['no_telp']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-emerald-500/10">
                     </div>
                     <div class="md:col-span-2">
-                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Masa Kerja</label>
-                        <input type="text" name="masa_kerja" value="<?= $data['masa_kerja']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-emerald-500/10">
+                        <label for="masa_kerja" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Masa Kerja</label>
+                        <input id="masa_kerja" type="text" name="masa_kerja" value="<?= $data['masa_kerja']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-emerald-500/10">
                     </div>
                 </div>
             </div>
@@ -120,12 +120,12 @@ include '../../includes/sidebar.php';
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Username</label>
-                        <input type="text" name="username" value="<?= $data['username']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-emerald-500/10" required>
+                        <label for="username" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Username</label>
+                        <input id="username" type="text" name="username" value="<?= $data['username']; ?>" autocomplete="username" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-emerald-500/10" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Password Baru</label>
-                        <input type="text" name="password" value="" placeholder="Password" 
+                        <label for="password" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Password Baru</label>
+                        <input id="password" type="text" name="password" value="" placeholder="Password" 
                                class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10">
                         <p class="text-[10px] text-emerald-600 mt-2 italic">*Biarkan kosong jika tetap ingin menggunakan password lama.</p>
                     </div>

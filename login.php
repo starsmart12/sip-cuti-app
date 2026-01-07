@@ -44,10 +44,9 @@ if (isset($_POST['login'])) {
     
     <link rel="icon" type="image/png" href="assets/img/logo_pn.png">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/sip_cuti/assets/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body class="bg-emerald-900 min-h-screen flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
@@ -76,19 +75,19 @@ if (isset($_POST['login'])) {
 
                 <form action="" method="POST" class="space-y-5 sm:space-y-6">
                     <div>
-                        <label class="block text-[10px] font-black text-emerald-900 uppercase tracking-widest mb-2 ml-1">Username</label>
+                        <label for="username" class="block text-[10px] font-black text-emerald-900 uppercase tracking-widest mb-2 ml-1">Username</label>
                         <div class="relative group">
                             <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-600 group-focus-within:text-yellow-500 transition-colors">
                                 <i class="fas fa-user text-sm"></i>
                             </span>
-                            <input type="text" name="username" required
+                            <input id="username" type="text" name="username" autocomplete="username" required 
                                 class="block w-full pl-11 pr-4 py-3.5 sm:py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent outline-none transition-all text-sm sm:text-base"
                                 placeholder="Username">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-black text-emerald-900 uppercase tracking-widest mb-2 ml-1">Password</label>
+                        <label for="passwordInput" class="block text-[10px] font-black text-emerald-900 uppercase tracking-widest mb-2 ml-1">Password</label>
                         <div class="relative group">
                             <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-600 group-focus-within:text-yellow-500 transition-colors">
                                 <i class="fas fa-lock text-sm"></i>

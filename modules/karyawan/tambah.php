@@ -110,28 +110,28 @@ include '../../includes/sidebar.php';
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="md:col-span-2">
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Nama Lengkap & Gelar</label>
-                        <input type="text" name="nama_lengkap" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:bg-white focus:ring-4 focus:ring-green-500/10 focus:border-green-500 transition-all outline-none">
+                        <label for="nama_lengkap" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Nama Lengkap & Gelar</label>
+                        <input id="nama_lengkap" type="text" name="nama_lengkap" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:bg-white focus:ring-4 focus:ring-green-500/10 focus:border-green-500 transition-all outline-none">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">NIP</label>
-                        <input type="text" name="nip" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
+                        <label for="nip" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">NIP</label>
+                        <input id="nip" type="text" name="nip" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Nomor Telepon/WA</label>
-                        <input type="text" name="no_telp" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
+                        <label for="no_telp" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Nomor Telepon/WA</label>
+                        <input id="no_telp" type="text" name="no_telp" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Golongan / Pangkat</label>
-                        <select name="golongan" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none cursor-pointer">
+                        <label for="golongan" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Golongan / Pangkat</label>
+                        <select id="golongan" name="golongan" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none cursor-pointer">
                             <option value="">Pilih Golongan...</option>
                             <?php $gols = ["II/a", "III/a", "III/b", "IV/a"]; 
                             foreach($gols as $g) echo "<option value='$g'>$g</option>"; ?>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Masa Kerja</label>
-                        <input type="text" name="masa_kerja" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
+                        <label for="masa_kerja" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Masa Kerja</label>
+                        <input id="masa_kerja" type="text" name="masa_kerja" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
                     </div>
                 </div>
             </div>
@@ -145,12 +145,12 @@ include '../../includes/sidebar.php';
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Username</label>
-                        <input type="text" name="username" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
+                        <label for="username" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Username</label>
+                        <input id="username" type="text" name="username" autocomplete="username" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Password Login</label>
-                        <input type="password" name="password" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
+                        <label for="password" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Password Login</label>
+                        <input id="password" type="password" name="password" required class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
                     </div>
                 </div>
             </div>
@@ -164,8 +164,8 @@ include '../../includes/sidebar.php';
                 </h3>
                 <div class="space-y-5">
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Jabatan Satker</label>
-                        <select name="id_jabatan" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none">
+                        <label for="id_jabatan" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Jabatan Satker</label>
+                        <select id="id_jabatan" name="id_jabatan" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none">
                             <?php 
                             $j = mysqli_query($conn, "SELECT * FROM jabatan ORDER BY nama_jabatan ASC");
                             while($rj = mysqli_fetch_assoc($j)) echo "<option value='".$rj['id_jabatan']."'>".$rj['nama_jabatan']."</option>"; 
@@ -173,8 +173,8 @@ include '../../includes/sidebar.php';
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Level Akses Cuti</label>
-                        <select name="level_akses" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none">
+                        <label for="level_akses" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Level Akses Cuti</label>
+                        <select id="level_akses" name="level_akses" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none">
                             <option value="staff">Staff (Pemohon)</option>
                             <option value="pejabat">Pejabat (Pemberi ACC)</option>
                             <?php if ($role_login === 'admin' && $lvl_login === 'admin') : ?>
@@ -183,8 +183,8 @@ include '../../includes/sidebar.php';
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Atasan Langsung</label>
-                        <select name="manager_id" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none">
+                        <label for="manager_id" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Atasan Langsung</label>
+                        <select id="manager_id" name="manager_id" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none">
                             <option value="">-- Tanpa Atasan --</option>
                             <?php 
                             $m = mysqli_query($conn, "SELECT id_user, nama_lengkap FROM users WHERE level_akses='pejabat' ORDER BY nama_lengkap ASC"); 
@@ -194,8 +194,8 @@ include '../../includes/sidebar.php';
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Role Menu</label>
-                            <select name="role" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-3 text-sm outline-none">
+                            <label for="role" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Role Menu</label>
+                            <select id="role" name="role" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-3 text-sm outline-none">
                                 <option value="karyawan">Karyawan</option>
                                 <option value="manager">Manager</option>
                                 <?php if ($role_login === 'admin' && $lvl_login === 'admin') : ?>
@@ -204,8 +204,8 @@ include '../../includes/sidebar.php';
                             </select>
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Jatah Cuti</label>
-                            <input type="number" name="jatah_cuti_tahunan" value="12" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-3 text-sm outline-none">
+                            <label for="jatah_cuti_tahunan" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Jatah Cuti</label>
+                            <input id="jatah_cuti_tahunan" type="number" name="jatah_cuti_tahunan" value="12" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-3 text-sm outline-none">
                         </div>
                     </div>
                 </div>

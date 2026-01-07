@@ -266,8 +266,8 @@ $result = mysqli_query($conn, $query);
                 <input type="hidden" name="current_status" id="reject_status">
                 
                 <div class="mb-6">
-                    <label class="block text-sm font-bold text-gray-700 mb-2">Alasan Penolakan</label>
-                    <textarea name="komentar" class="w-full border border-gray-200 rounded-xl p-4 focus:ring-2 focus:ring-rose-500 focus:border-transparent outline-none transition duration-200 text-sm" rows="4" placeholder="Tuliskan alasan penolakan..." required></textarea>
+                    <label for="komentar" class="block text-sm font-bold text-gray-700 mb-2">Alasan Penolakan</label>
+                    <textarea id="komentar" name="komentar" class="w-full border border-gray-200 rounded-xl p-4 focus:ring-2 focus:ring-rose-500 focus:border-transparent outline-none transition duration-200 text-sm" rows="4" placeholder="Tuliskan alasan penolakan..." required></textarea>
                 </div>
 
                 <div class="flex gap-3">
