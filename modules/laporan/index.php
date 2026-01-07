@@ -199,8 +199,9 @@ if (!$result) {
             <form action="cetak_rekap.php" method="GET" target="_blank">
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Pilih Bulan</label>
-                        <select name="bulan" class="w-full border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-emerald-500 outline-none text-sm">
+                        <label for="pilih_bulan" class="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Pilih Bulan</label>
+                        
+                        <select id="pilih_bulan" name="bulan" class="w-full border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-emerald-500 outline-none text-sm">
                             <?php 
                             $bulan_indo = [1=>'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
                             foreach($bulan_indo as $num => $nama): 
@@ -210,9 +211,11 @@ if (!$result) {
                             ?>
                         </select>
                     </div>
+
                     <div>
-                        <label class="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Pilih Tahun</label>
-                        <select name="tahun" class="w-full border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-emerald-500 outline-none text-sm">
+                        <label for="pilih_tahun" class="block text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Pilih Tahun</label>
+                        
+                        <select id="pilih_tahun" name="tahun" class="w-full border border-gray-200 rounded-xl p-3 focus:ring-2 focus:ring-emerald-500 outline-none text-sm">
                             <?php 
                             $tahun_skrg = date('Y');
                             for($i = $tahun_skrg; $i >= $tahun_skrg-5; $i--):
