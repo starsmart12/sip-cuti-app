@@ -3,14 +3,15 @@ session_start();
 require '../../includes/auth_check.php';
 require '../../config/database.php';
 
-// Ambil ID dari Session (Hanya bisa edit diri sendiri)
+// Ambil ID dari Session
 $id_user_login = $_SESSION['id_user'];
 
-// Ambil data user yang sedang login
-$result = mysqli_query($conn, "SELECT users.*, jabatan.nama_jabatan 
-                               FROM users 
-                               LEFT JOIN jabatan ON users.id_jabatan = jabatan.id_jabatan 
-                               WHERE id_user = $id_user_login");
+// UPDATE QUERY: Menggunakan u1.manager_id untuk mencari nama atasan di u2.id_user
+$result = mysqli_query($conn, "SELECT u1.*, j.nama_jabatan, u2.nama_lengkap AS nama_atasan 
+                               FROM users u1
+                               LEFT JOIN jabatan j ON u1.id_jabatan = j.id_jabatan 
+                               LEFT JOIN users u2 ON u1.manager_id = u2.id_user 
+                               WHERE u1.id_user = $id_user_login");
 $data = mysqli_fetch_assoc($result);
 
 $update_success = false;
@@ -57,10 +58,8 @@ if (isset($_POST['update_profile'])) {
                   WHERE id_user = $id_user_login";
 
         if (mysqli_query($conn, $query)) {
-            // Update Session Nama jika berubah
             $_SESSION['nama'] = $nama;
             $update_success = true;
-            // Refresh data terbaru
             $data['tanda_tangan'] = $newName; 
         } else {
             $error = "Gagal memperbarui profil.";
@@ -96,17 +95,30 @@ include '../../includes/sidebar.php';
                         <label for="nama_lengkap" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Nama Lengkap</label>
                         <input id="nama_lengkap" type="text" name="nama_lengkap" value="<?= $data['nama_lengkap']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 outline-none transition-all" required>
                     </div>
+                    
                     <div>
                         <label for="nip" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">NIP</label>
                         <input id="nip" type="text" name="nip" value="<?= $data['nip']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-emerald-500/10">
                     </div>
+
                     <div>
                         <label for="no_telp" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">No. Telepon</label>
                         <input id="no_telp" type="text" name="no_telp" value="<?= $data['no_telp']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-emerald-500/10">
                     </div>
+
+                    <div>
+                        <label for="jabatan" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Jabatan</label>
+                        <input id="jabatan" type="text" value="<?= $data['nama_jabatan']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-500 cursor-not-allowed" readonly>
+                    </div>
+
+                    <div>
+                        <label for="atasan" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Atasan Langsung</label>
+                        <input id="atasan" type="text" value="<?= $data['nama_atasan'] ?? 'Tidak Ada Atasan'; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-500 cursor-not-allowed" readonly>
+                    </div>
+
                     <div class="md:col-span-2">
                         <label for="masa_kerja" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Masa Kerja</label>
-                        <input id="masa_kerja" type="text" name="masa_kerja" value="<?= $data['masa_kerja']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-emerald-500/10">
+                        <input id="masa_kerja" type="text" name="masa_kerja" value="<?= $data['masa_kerja']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-500 cursor-not-allowed" readonly>
                     </div>
                 </div>
             </div>
@@ -169,6 +181,7 @@ include '../../includes/sidebar.php';
 </div>
 
 <script>
+// Javascript Tetap Sama
 function previewImage() {
     const input = document.getElementById('ttd_input');
     const preview = document.getElementById('preview_ttd');
@@ -187,8 +200,7 @@ function previewImage() {
         title: 'Profil Diperbarui!',
         text: 'Data personal Anda telah berhasil disimpan.',
         icon: 'success',
-        confirmButtonColor: '#065f46',
-        borderRadius: '20px'
+        confirmButtonColor: '#065f46'
     });
 <?php endif; ?>
 
