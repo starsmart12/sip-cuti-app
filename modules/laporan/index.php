@@ -136,9 +136,9 @@ if (!$result) {
                                 <div class="text-xs text-gray-600 max-w-[200px] truncate" title="<?= $row['alasan']; ?>">
                                     <?= $row['alasan']; ?>
                                 </div>
-                                <?php if($row['status'] === 'rejected' && !empty($row['komentar_reject'])) : ?>
+                                <?php if($row['status'] === 'rejected' && !empty($row['keterangan_admin'])) : ?>
                                     <div class="text-[10px] text-rose-500 mt-1 italic font-medium">
-                                        Note: <?= $row['komentar_reject']; ?>
+                                        Note: <?= $row['keterangan_admin']; ?>
                                     </div>
                                 <?php endif; ?>
                             </td>
@@ -243,9 +243,9 @@ function viewDetail(data) {
     
     if (data.status === 'rejected') {
         detailKeterangan = `
-            <div class="text-rose-500 text-xs uppercase font-bold mt-2">Alasan Penolakan (Admin)</div>
+            <div class="text-rose-500 text-xs uppercase font-bold mt-2">Alasan Penolakan</div>
             <div class="p-3 bg-rose-50 border border-rose-100 rounded-lg text-rose-700 font-medium">
-                : ${data.komentar_reject || 'Tidak ada alasan spesifik'}
+                : ${data.keterangan_admin || 'Tidak ada alasan spesifik'}
             </div>
         `;
     }

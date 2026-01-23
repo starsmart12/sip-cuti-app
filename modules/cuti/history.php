@@ -5,7 +5,6 @@ include '../../includes/header.php';
 include '../../includes/sidebar.php';
 
 $id_user = $_SESSION['id_user'];
-// Menggunakan query yang aman
 $query = "SELECT pc.*, jc.nama_jenis FROM pengajuan_cuti pc 
           JOIN jenis_cuti jc ON pc.id_jenis = jc.id_jenis 
           WHERE pc.id_user = '$id_user' ORDER BY pc.created_at DESC";
@@ -58,19 +57,28 @@ $result = mysqli_query($conn, $query);
                             <td class="p-5 text-center">
                                 <div class="text-sm font-extrabold text-emerald-800"><?= $row['jumlah_hari']; ?> <span class="text-[10px] font-normal text-emerald-600 uppercase">Hari</span></div>
                             </td>
-                            <td class="p-5">
+                            <td class="p-5 text-center">
                                 <div class="flex flex-col items-center">
                                     <?php 
-                                        $status = $row['status'];
-                                        $badge = 'bg-amber-100 text-amber-700 border-amber-200'; // Pending
-                                        if($status == 'approved') $badge = 'bg-emerald-100 text-emerald-700 border-emerald-200';
-                                        if($status == 'rejected') $badge = 'bg-red-100 text-red-700 border-red-200';
+                                        $status_raw = $row['status']; // Ambil teks asli dari DB
+                                        $status_clean = strtolower($status_raw);
+                                        
+                                        // Penentuan Warna Berdasarkan Status
+                                        if (strpos($status_clean, 'pending') !== false || $status_clean == 'menunggu') {
+                                            $badge_style = 'bg-amber-100 text-amber-700 border-amber-200';
+                                        } elseif ($status_clean == 'selesai' || $status_clean == 'approved' || $status_clean == 'disetujui') {
+                                            $badge_style = 'bg-emerald-600 text-white border-emerald-700 shadow-lg shadow-emerald-100';
+                                        } elseif ($status_clean == 'rejected' || $status_clean == 'ditolak') {
+                                            $badge_style = 'bg-red-100 text-red-700 border-red-200';
+                                        } else {
+                                            $badge_style = 'bg-gray-100 text-gray-700 border-gray-200';
+                                        }
                                     ?>
-                                    <span class="px-3 py-1 rounded-full border text-[10px] font-black uppercase tracking-widest shadow-sm <?= $badge; ?>">
-                                        <?= $status; ?>
+                                    <span class="px-3 py-1.5 rounded-full border text-[10px] font-black uppercase tracking-widest shadow-sm <?= $badge_style; ?>">
+                                        <?= $status_raw; ?>
                                     </span>
 
-                                    <?php if($status == 'rejected' && !empty($row['keterangan_admin'])) : ?>
+                                    <?php if(($status_clean == 'rejected' || $status_clean == 'ditolak') && !empty($row['keterangan_admin'])) : ?>
                                         <button onclick="showReason('<?= addslashes($row['keterangan_admin']); ?>')" class="mt-2 text-[10px] text-red-500 hover:text-red-700 font-bold underline decoration-dotted">
                                             Lihat Alasan
                                         </button>
@@ -81,7 +89,7 @@ $result = mysqli_query($conn, $query);
                         <?php endwhile; ?>
                     <?php else : ?>
                         <tr>
-                            <td colspan="5" class="p-16 text-center">
+                            <td colspan="4" class="p-16 text-center">
                                 <div class="flex flex-col items-center">
                                     <div class="bg-emerald-50 p-4 rounded-full mb-4">
                                         <i class="fas fa-folder-open text-emerald-200 text-4xl"></i>
@@ -98,18 +106,16 @@ $result = mysqli_query($conn, $query);
 </div>
 
 <script>
-    // Fungsi untuk menampilkan alasan penolakan dengan modal cantik
+    // Perbaikan SweetAlert2: borderRadius dihapus agar tidak error
     function showReason(reason) {
         Swal.fire({
             title: 'Alasan Penolakan',
             text: reason,
             icon: 'info',
-            confirmButtonColor: '#059669',
-            borderRadius: '15px'
+            confirmButtonColor: '#059669'
         });
     }
 
-    // Menangani Notifikasi Berhasil (Sinkron dengan form pengajuan)
     document.addEventListener('DOMContentLoaded', function() {
         const urlParams = new URLSearchParams(window.location.search);
         
@@ -118,10 +124,8 @@ $result = mysqli_query($conn, $query);
                 title: 'Berhasil Terkirim!',
                 text: 'Pengajuan cuti Anda telah masuk ke sistem dan menunggu verifikasi.',
                 icon: 'success',
-                confirmButtonColor: '#059669',
-                borderRadius: '15px'
+                confirmButtonColor: '#059669'
             });
-            // Bersihkan URL
             window.history.replaceState({}, document.title, window.location.pathname);
         }
     });
