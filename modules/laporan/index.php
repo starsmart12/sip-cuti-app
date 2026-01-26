@@ -249,7 +249,6 @@ function viewDetail(data) {
             </div>
         `;
     }
-
     const content = `
         <div class="grid grid-cols-1 gap-4">
             <div class="grid grid-cols-2 gap-2 border-b pb-2">

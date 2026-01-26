@@ -1,7 +1,9 @@
 <?php 
 require '../../includes/auth_check.php';
 require '../../includes/role_check.php';
+require '../../includes/function.php';
 require '../../config/database.php';
+
 
 // Hanya role admin yang boleh akses halaman ini
 allow_roles(['admin']);
@@ -45,7 +47,7 @@ if (isset($_POST['update'])) {
     $nip        = mysqli_real_escape_string($conn, $_POST['nip']);
     $golongan   = mysqli_real_escape_string($conn, $_POST['golongan']);
     $no_telp    = mysqli_real_escape_string($conn, $_POST['no_telp']);
-    $masa_kerja = mysqli_real_escape_string($conn, $_POST['masa_kerja']);
+    $tanggal_masuk = mysqli_real_escape_string($conn, $_POST['tanggal_masuk']);
 
     // --- LOGIKA PASSWORD (HASHING SAAT SIMPAN) ---
     // Jika input password diisi, buat hash baru. Jika kosong, gunakan hash lama dari database.
@@ -86,7 +88,7 @@ if (isset($_POST['update'])) {
                     nip = '$nip',
                     golongan = '$golongan',
                     no_telp = '$no_telp',
-                    masa_kerja = '$masa_kerja',
+                    tanggal_masuk = '$tanggal_masuk',
                     tanda_tangan = '$newName',
                     role = '$role',
                     level_akses = '$lvl_akses',
@@ -157,8 +159,10 @@ include '../../includes/sidebar.php';
                         <input id="golongan" type="text" name="golongan" value="<?= $data['golongan']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10">
                     </div>
                     <div>
-                        <label for="masa_kerja" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Masa Kerja</label>
-                        <input id="masa_kerja" type="text" name="masa_kerja" value="<?= $data['masa_kerja']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10">
+                        <label for="tanggal_masuk" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">TMT (Masa Kerja)</label>
+                        <input id="tanggal_masuk" type="date" name="tanggal_masuk" value="<?= $data['tanggal_masuk']; ?>" required 
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
+                        <p class="text-[10px] text-gray-400 mt-1 italic leading-tight">*Dihitung otomatis sejak tanggal bergabung.</p>
                     </div>
                 </div>
             </div>

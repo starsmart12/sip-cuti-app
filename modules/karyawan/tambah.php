@@ -1,6 +1,7 @@
 <?php 
 require '../../includes/auth_check.php';
 require '../../config/database.php';
+require '../../includes/function.php';
 
 // Proteksi halaman: pastikan hanya admin yang bisa akses
 if ($_SESSION['role'] !== 'admin') {
@@ -25,7 +26,7 @@ if(isset($_POST['save'])) {
         $pass       = password_hash($_POST['password'], PASSWORD_DEFAULT); 
         $nip        = mysqli_real_escape_string($conn, $_POST['nip']);
         $golongan   = mysqli_real_escape_string($conn, $_POST['golongan']);
-        $masa_kerja = mysqli_real_escape_string($conn, $_POST['masa_kerja']);
+        $tanggal_masuk = mysqli_real_escape_string($conn, $_POST['tanggal_masuk']);
         $telp       = mysqli_real_escape_string($conn, $_POST['no_telp']);
         $role       = $_POST['role'];
         $lvl_akses  = $_POST['level_akses'];
@@ -56,11 +57,11 @@ if(isset($_POST['save'])) {
         if(!isset($error)) {
             $sql = "INSERT INTO users (
                         username, password, nama_lengkap, no_telp, tanda_tangan, 
-                        nip, golongan, masa_kerja, role, id_jabatan, 
+                        nip, golongan, tanggal_masuk, role, id_jabatan, 
                         level_akses, manager_id, jatah_cuti_tahunan
                     ) VALUES (
                         '$user', '$pass', '$nama', '$telp', '$newName', 
-                        '$nip', '$golongan', '$masa_kerja', '$role', $jab, 
+                        '$nip', '$golongan', '$tanggal_masuk', '$role', $jab, 
                         '$lvl_akses', $mgr, $jatah
                     )";
 
@@ -129,9 +130,11 @@ include '../../includes/sidebar.php';
                             foreach($gols as $g) echo "<option value='$g'>$g</option>"; ?>
                         </select>
                     </div>
-                    <div>
-                        <label for="masa_kerja" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Masa Kerja</label>
-                        <input id="masa_kerja" type="text" name="masa_kerja" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
+                           <div>
+                        <label for="tanggal_masuk" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">TMT (Masa Kerja)</label>
+                        <input id="tanggal_masuk" type="date" name="tanggal_masuk"  required 
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 outline-none focus:ring-4 focus:ring-green-500/10 transition-all">
+                        <p class="text-[10px] text-gray-400 mt-1 italic leading-tight">*Dihitung otomatis sejak tanggal bergabung.</p>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ ini_set('display_errors', 1);
 
 require_once '../../vendor/autoload.php'; 
 require_once '../../config/database.php';
+require '../../includes/function.php';
 
 use PhpOffice\PhpWord\TemplateProcessor;
 
@@ -25,7 +26,7 @@ if (isset($_GET['id'])) {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
     
     // 1. QUERY UTAMA: Mengambil data cuti, pengaju, dan kolom approved_by
-    $query = "SELECT pc.*, u.nama_lengkap, u.nip, u.golongan, u.masa_kerja, u.no_telp, j.nama_jabatan, u.level_akses, 
+    $query = "SELECT pc.*, u.nama_lengkap, u.nip, u.golongan, u.tanggal_masuk, u.no_telp, j.nama_jabatan, u.level_akses, 
               m.nama_lengkap AS nama_atasan, m.nip AS nip_atasan, jm.nama_jabatan AS jabatan_atasan
               FROM pengajuan_cuti pc 
               JOIN users u ON pc.id_user = u.id_user 
@@ -39,7 +40,7 @@ if (isset($_GET['id'])) {
     $data = mysqli_fetch_assoc($result);
 
     if (!$data) die("Data tidak ditemukan.");
-
+    
     // --- LOGIKA DETEKSI JABATAN UNTUK PEMILIHAN TEMPLATE ---
     $jabatan_pengaju = strtoupper(trim($data['nama_jabatan']));
 
@@ -64,7 +65,7 @@ if (isset($_GET['id'])) {
     $templateProcessor->setValue('nip', $data['nip']); 
     $templateProcessor->setValue('jabatan', $data['nama_jabatan']);
     $templateProcessor->setValue('gol_ruang', $data['golongan']);
-    $templateProcessor->setValue('masa_kerja', $data['masa_kerja']);
+    $templateProcessor->setValue('masa_kerja', hitungMasaKerja($data['tanggal_masuk']));
     $templateProcessor->setValue('alasan', $data['alasan']);
     $templateProcessor->setValue('jml_hari', $data['jumlah_hari']);
     $templateProcessor->setValue('terbilang', terbilang($data['jumlah_hari']));

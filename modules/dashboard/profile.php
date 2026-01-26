@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require '../../includes/auth_check.php';
+require '../../includes/function.php';
 require '../../config/database.php';
 
 // Ambil ID dari Session
@@ -21,7 +22,7 @@ if (isset($_POST['update_profile'])) {
     $username   = mysqli_real_escape_string($conn, $_POST['username']);
     $nip        = mysqli_real_escape_string($conn, $_POST['nip']);
     $no_telp    = mysqli_real_escape_string($conn, $_POST['no_telp']);
-    $masa_kerja = mysqli_real_escape_string($conn, $_POST['masa_kerja']);
+    $tanggal_masuk = mysqli_real_escape_string($conn, $_POST['tanggal_masuk']);
 
     // Logika Password
     if (!empty($_POST['password'])) {
@@ -53,7 +54,7 @@ if (isset($_POST['update_profile'])) {
                     nama_lengkap = '$nama',
                     nip = '$nip',
                     no_telp = '$no_telp',
-                    masa_kerja = '$masa_kerja',
+                    tanggal_masuk = '$tanggal_masuk',
                     tanda_tangan = '$newName'
                   WHERE id_user = $id_user_login";
 
@@ -116,9 +117,16 @@ include '../../includes/sidebar.php';
                         <input id="atasan" type="text" value="<?= $data['nama_atasan'] ?? 'Tidak Ada Atasan'; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-500 cursor-not-allowed" readonly>
                     </div>
 
-                    <div class="md:col-span-2">
-                        <label for="masa_kerja" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Masa Kerja</label>
-                        <input id="masa_kerja" type="text" name="masa_kerja" value="<?= $data['masa_kerja']; ?>" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-500 cursor-not-allowed" readonly>
+                   <div class="md:col-span-2">
+                        <label for="masa_kerja" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Masa Kerja (Otomatis)</label>
+                        
+                        <input id="masa_kerja" 
+                            type="text" 
+                            value="<?= hitungMasaKerja($data['tanggal_masuk']); ?>" 
+                            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-500 cursor-not-allowed" 
+                            readonly>
+                            
+                        <p class="text-[10px] text-gray-400 mt-1 italic">*Dihitung otomatis berdasarkan Tanggal Mulai Tugas (TMT)</p>
                     </div>
                 </div>
             </div>
